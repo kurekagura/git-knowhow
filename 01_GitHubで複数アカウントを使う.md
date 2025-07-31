@@ -7,10 +7,21 @@ HTTPSで複数のアカウントでcloneする場合は特別な方法が必要�
 cloneするURLを次のように変更する
 
 ```cmd
-git clone https://{ユーザ名}:{トークン}@github.com/{ユーザ名}/reponame.git
+git clone https://{ユーザー名}:{トークン}@github.com/{ユーザ名}/reponame.git
 ```
 
 この設定は.git/configに保存される。
+
+このcloneからcommitするとユーザー名とメルアドが他のアカウントになるので、次のようにlocalに意図したものにする。本当のemailを隠したい場合、GitHubの設定画面でnoreplyアドレスを得ることができるので、それを設定すると良い。
+
+```cmd
+## cloneしたフォルダに移動して確認
+git config user.name
+
+## 設定
+git config --local user.name "ユーザー名"
+git config --local user.email "*****+ユーザー名@users.noreply.github.com"
+```
 
 ## 参考・謝辞
 
